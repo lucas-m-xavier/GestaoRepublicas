@@ -1,69 +1,73 @@
-<div>
-    <mat-form-field>
-        <input matInput placeholder="Nome">
-    </mat-form-field>
+<form (ngSubmit)="onSubmit()" #republicaForm="ngForm">
+    <div class="container">
+        <mat-form-field>
+            <input matInput placeholder="Nome" [(ngModel)]="republica.nome">
+        </mat-form-field>
 
-    <mat-form-field>
-        <input matInput placeholder="Endereco">
-    </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Endereco" [(ngModel)]="republica.endereco">
+        </mat-form-field>
 
-    <mat-form-field>
-        <input matInput type="number" placeholder="Numero de Vagas">
-    </mat-form-field>
+        <mat-form-field>
+            <input matInput type="number" placeholder="Numero de Vagas" [(ngModel)]="republica.numeroVagas">
+        </mat-form-field>
 
-    <mat-form-field>
-        <mat-select placeholder="Tipo de Locação">
-            <mat-option value="apartamento">Apartamento</mat-option>
-            <mat-option value="casa">Casa</mat-option>
-        </mat-select>
-    </mat-form-field>
+        <mat-form-field>
+            <mat-select placeholder="Tipo de Locação" [(ngModel)]="republica.tipoLocacao">
+                <mat-option value="apartamento">Apartamento</mat-option>
+                <mat-option value="casa">Casa</mat-option>
+            </mat-select>
+        </mat-form-field>
 
-    <mat-form-field>
-        <mat-select placeholder="Gênero">
-            <mat-option value="feminina">Feminina</mat-option>
-            <mat-option value="masculina">Masculina</mat-option>
-            <mat-option value="unissex">Unissex</mat-option>
-        </mat-select>
-    </mat-form-field>
+        <mat-form-field>
+            <mat-select placeholder="Gênero" [(ngModel)]="republica.genero">
+                <mat-option value="feminina">Feminina</mat-option>
+                <mat-option value="masculina">Masculina</mat-option>
+                <mat-option value="unissex">Unissex</mat-option>
+            </mat-select>
+        </mat-form-field>
 
-    <mat-form-field>
-        <input matInput placeholder="Integrantes">
-    </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Integrantes" [(ngModel)]="republica.integrantes">
+        </mat-form-field>
 
-    <mat-form-field>
-        <input matInput type="number" placeholder="Nº de Cômodos">
-    </mat-form-field>
+        <mat-form-field>
+            <input matInput type="number" placeholder="Nº de Cômodos" [(ngModel)]="republica.numeroComodos">
+        </mat-form-field>
 
-    <mat-form-field>
-        <textarea matInput placeholder="Utensílios"></textarea>
-    </mat-form-field>
+        <mat-form-field>
+            <textarea matInput placeholder="Utensílios" [(ngModel)]="republica.utensilios"></textarea>
+        </mat-form-field>
 
-    <mat-form-field>
-        <textarea matInput placeholder="Diferencial"></textarea>
-    </mat-form-field>
+        <mat-form-field>
+            <textarea matInput placeholder="Diferencial" [(ngModel)]="republica.diferencial"></textarea>
+        </mat-form-field>
 
-    <mat-form-field>
-        <input matInput type="number" placeholder="Nº de Vagas Disponíveis">
-    </mat-form-field>
+        <mat-form-field>
+            <input matInput type="number" placeholder="Nº de Vagas Disponíveis"
+                [(ngModel)]="republica.numeroVagasDisponiveis">
+        </mat-form-field>
 
-    <mat-form-field>
-        <textarea matInput placeholder="Descrição"></textarea>
-    </mat-form-field>
+        <mat-form-field>
+            <textarea matInput placeholder="Descrição" [(ngModel)]="republica.descricao"></textarea>
+        </mat-form-field>
 
-    <mat-form-field>
-        <mat-select placeholder="Representante">
-            <mat-option value="option">Option</mat-option>
-        </mat-select>
-    </mat-form-field>
+        <mat-form-field>
+            <mat-select placeholder="Representante" [(ngModel)]="republica.representante">
+                <mat-option value="option">Option</mat-option>
+            </mat-select>
+        </mat-form-field>
 
-    <mat-form-field>
-        <input matInput placeholder="Link da Rede Social">
-    </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Link da Rede Social" [(ngModel)]="republica.link">
+        </mat-form-field>
 
-    <mat-form-field>
-        <mat-select placeholder="Curso">
-            <mat-option value="agronomia">Agronomia</mat-option>
-            <mat-option value="fisica">Física</mat-option>
-        </mat-select>
-    </mat-form-field>
-</div>
+        <mat-form-field>
+            <mat-select placeholder="Curso" [(ngModel)]="republica.curso">
+                <mat-option value="agronomia">Agronomia</mat-option>
+                <mat-option value="fisica">Física</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <button type="submit" mat-raised-button color="primary">Cadastrar</button>
+    </div>
+</form>

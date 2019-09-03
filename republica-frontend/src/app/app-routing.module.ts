@@ -4,7 +4,8 @@ import { RepublicaListComponent } from './republica-list/republica-list.componen
 import { RepublicaFormComponent } from './republica-form/republica-form.component';
 
 const routes: Routes = [
-  { path: 'republicas', component: RepublicaListComponent }
+  { path: 'republicas', component: RepublicaListComponent },
+  { path: 'addrepublica', component: RepublicaFormComponent }
 ];
 
 @NgModule({
