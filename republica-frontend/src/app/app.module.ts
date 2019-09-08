@@ -11,20 +11,28 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
+import {MatSidenavModule} from '@angular/material/sidenav';
 
 import { AppComponent } from './app.component';
 import { RepublicaListComponent } from './republica-list/republica-list.component';
 import { RepublicaFormComponent } from './republica-form/republica-form.component';
 
 import { RepublicaService } from './services/republica.service';
+import { MainNavComponent } from './main-nav/main-nav.component';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
 
 @NgModule({
   declarations: [
     AppComponent,
     RepublicaListComponent,
-    RepublicaFormComponent
+    RepublicaFormComponent,
+    MainNavComponent
   ],
   imports: [
+    MatSidenavModule,
     BrowserModule,
     AppRoutingModule,
     NoopAnimationsModule,
@@ -36,7 +44,11 @@ import { RepublicaService } from './services/republica.service';
     MatInputModule,
     MatSelectModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    LayoutModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatListModule
   ],
   providers: [
     RepublicaService
