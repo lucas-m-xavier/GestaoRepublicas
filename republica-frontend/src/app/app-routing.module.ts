@@ -7,7 +7,7 @@ import { RepublicadisponivelListComponent } from './republicadisponivel-list/rep
 const routes: Routes = [
   { path: 'republicas', component: RepublicaListComponent },
   { path: 'addrepublica', component: RepublicaFormComponent },
-  { path: 'republicasdisponiveis', component: RepublicadisponivelListComponent }
+  { path: 'republicas/disponiveis', component: RepublicadisponivelListComponent }
 ];
 
 @NgModule({

@@ -3,6 +3,3 @@
     flex-direction: column;
 }
   
-.container > * {
-    width: 80%;
-}
