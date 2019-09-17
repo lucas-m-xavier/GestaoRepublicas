@@ -1,6 +1,9 @@
 <div style="padding-bottom: 13px">
     Repúblicas
 </div>
+<button mat-raised-button color="primary" (click)="onCreate()">Adicionar República</button>
+<br>
+<br>
 <div class="mat-elevation-z8">
     <table mat-table [dataSource]="republicas" class="full-width-table">
 
@@ -71,19 +74,24 @@
             <td mat-cell *matCellDef="let republica"> {{republica.representante.nome}} </td>
         </ng-container>
 
+        <!--
         <ng-container matColumnDef="link">
             <th mat-header-cell *matHeaderCellDef> Link </th>
             <td mat-cell *matCellDef="let republica"> {{republica.link}} </td>
         </ng-container>
-
+        
+        
         <ng-container matColumnDef="curso">
             <th mat-header-cell *matHeaderCellDef> Curso </th>
             <td mat-cell *matCellDef="let republica"> {{republica.curso}} </td>
         </ng-container>
+        -->
 
         <ng-container matColumnDef="acoes">
-            <th mat-header-cell *matHeaderCellDef></th>
+            <th mat-header-cell *matHeaderCellDef>Ações</th>
             <td mat-cell *matCellDef="let republica">
+                <button mat-flat-button color="accent" (click)="onDetalhes(republica)">Detalhes</button>
+                &nbsp;
                 <button mat-flat-button color="primary" (click)="onUpdate(republica)">Editar</button>
                 &nbsp;
                 <button mat-flat-button color="warn" (click)="onDelete(republica.id)">Excluir</button>
@@ -94,5 +102,3 @@
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
 </div>
-<br>
-<button mat-raised-button color="primary" (click)="onCreate()">Adicionar República</button>

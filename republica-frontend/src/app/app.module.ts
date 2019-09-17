@@ -16,7 +16,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 
 import { AppComponent } from './app.component';
-import { RepublicaListComponent } from './republica-list/republica-list.component';
+import { RepublicaListComponent, RepublicaListDialogComponent } from './republica-list/republica-list.component';
 import { RepublicaFormComponent } from './republica-form/republica-form.component';
 
 import { RepublicaService } from './services/republica.service';
@@ -27,6 +27,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { RepublicadisponivelListComponent } from './republicadisponivel-list/republicadisponivel-list.component';
 import { MatCardModule } from '@angular/material/card';
+import { MatDialogModule } from '@angular/material/dialog';
+import { RepublicaReceitaDespesaFormComponent } from './republica-receita-despesa-form/republica-receita-despesa-form.component';
+import { MatRadioModule } from '@angular/material/radio';
 
 @NgModule({
   declarations: [
@@ -34,7 +37,12 @@ import { MatCardModule } from '@angular/material/card';
     RepublicaListComponent,
     RepublicaFormComponent,
     RepublicadisponivelListComponent,
-    MainNavComponent
+    MainNavComponent,
+    RepublicaListDialogComponent,
+    RepublicaReceitaDespesaFormComponent
+  ],
+  entryComponents: [
+    RepublicaListDialogComponent
   ],
   imports: [
     MatSidenavModule,
@@ -56,7 +64,9 @@ import { MatCardModule } from '@angular/material/card';
     MatListModule,
     MatPaginatorModule,
     MatSortModule,
-    MatCardModule
+    MatCardModule,
+    MatDialogModule,
+    MatRadioModule
   ],
   providers: [
     RepublicaService

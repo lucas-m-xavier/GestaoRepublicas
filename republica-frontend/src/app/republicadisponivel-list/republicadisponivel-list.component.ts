@@ -11,7 +11,7 @@ import { RepublicadisponivelService } from '../services/republicadisponivel.serv
 export class RepublicadisponivelListComponent implements OnInit {
 
   republicas: Republica[]
-  displayedColumns: string[] = ['id', 'nome', 'endereco', 'numeroVagas', 'tipoLocacao', 'genero', /*'integrantes',*/ 'numeroComodos', 'utensilios', 'diferencial', 'numeroVagasDisponiveis', 'descricao', 'representante', 'link', 'curso'];
+  displayedColumns: string[] = ['id', 'nome', 'endereco', 'numeroVagas', 'tipoLocacao', 'genero', /*'integrantes',*/ 'numeroComodos', 'utensilios', 'diferencial', 'numeroVagasDisponiveis', 'descricao', 'representante', 'link'/*, 'curso'*/];
   
   constructor(private route: ActivatedRoute, private router: Router, private republicaDisponivelService: RepublicadisponivelService) { }
 

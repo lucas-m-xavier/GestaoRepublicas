@@ -1,7 +1,7 @@
 import { Representante } from './representante';
 
 export class Republica {
-    id: number
+    id: number;
     nome: String
     endereco: String
     numeroVagas: number
@@ -15,5 +15,4 @@ export class Republica {
     descricao: String
     representante: Representante
     link: String
-    curso: String
 }

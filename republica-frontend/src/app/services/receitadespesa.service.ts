@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Republica } from '../models/republica';
+import { ReceitaDespesa } from '../models/receita-despesa';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
@@ -7,15 +7,16 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 @Injectable({
   providedIn: 'root'
 })
-export class RepublicaService {
+export class ReceitadespesaService {
 
-  private republicasUrl: string;
-  private republica = new Republica();
+  private receitaDespesaUrl: string;
+  private receitaDespesa = new ReceitaDespesa();
 
   constructor(private http: HttpClient) {
-    this.republicasUrl = 'http://localhost:8080/republicas';
+    this.receitaDespesaUrl = 'http://localhost:8080/republica/receitasdespesas';
   }
 
+  /*
   form: FormGroup = new FormGroup({
     $key: new FormControl(null),
     nome: new FormControl('', Validators.required),
@@ -31,30 +32,30 @@ export class RepublicaService {
     descricao: new FormControl('', Validators.required),
     representante: new FormControl('', Validators.required),
     link: new FormControl('', Validators.required)
-  });
+  });*/
 
-  public findAll(): Observable<Republica[]> {
-    return this.http.get<Republica[]>(this.republicasUrl);
+  public findAll(): Observable<ReceitaDespesa[]> {
+    return this.http.get<ReceitaDespesa[]>(this.receitaDespesaUrl);
   }
 
-  public save(republica: Republica) {
-    return this.http.post<Republica>(this.republicasUrl, republica);
+  public save(receitaDespesa: ReceitaDespesa) {
+    return this.http.post<ReceitaDespesa>(this.receitaDespesaUrl, receitaDespesa);
   }
 
-  public update(republica: Republica) {
-    return this.http.put<Republica>(`${this.republicasUrl}/${republica.id}`, republica);
+  public update(receitaDespesa: ReceitaDespesa) {
+    return this.http.put<ReceitaDespesa>(`${this.receitaDespesaUrl}/${receitaDespesa.id}`, receitaDespesa);
   }
 
   public delete(id: number) {
-    return this.http.delete<void>(`${this.republicasUrl}/${id}`);
+    return this.http.delete<void>(`${this.receitaDespesaUrl}/${id}`);
   }
 
-  public getRepublica() {
-    return this.republica;
+  public getReceitaDespesa() {
+    return this.receitaDespesa;
   }
 
-  public setRepublica(republica: Republica) {
-    this.republica = republica;
+  public setReceitaDespesa(receitaDespesa: ReceitaDespesa) {
+    this.receitaDespesa = receitaDespesa;
   }
 
 }

@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Republica } from '../models/republica';
 import { RepublicaService } from '../services/republica.service'
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-republica-list',
@@ -11,14 +12,15 @@ import { RepublicaService } from '../services/republica.service'
 export class RepublicaListComponent implements OnInit {
 
   republicas: Republica[]
-  displayedColumns: string[] = ['id', 'nome', 'endereco', 'numeroVagas', 'tipoLocacao', 'genero', /*'integrantes',*/ 'numeroComodos', 'utensilios', 'diferencial', 'numeroVagasDisponiveis', 'descricao', 'representante', 'link', 'curso', 'acoes'];
+  displayedColumns: string[] = ['id', 'nome', 'endereco', 'numeroVagas', 'tipoLocacao', 'genero',
+    'numeroComodos', 'diferencial', 'numeroVagasDisponiveis', 'descricao', 'representante', 'acoes'];
 
-  constructor(private route: ActivatedRoute, private router: Router, private republicaService: RepublicaService) { }
+  constructor(private route: ActivatedRoute, private router: Router, private republicaService: RepublicaService, private dialog: MatDialog) { }
 
   ngOnInit() {
     this.republicaService.findAll().subscribe(data => {
       this.republicas = data
-    })
+    });
   }
 
   onUpdate(republica: Republica) {
@@ -28,7 +30,7 @@ export class RepublicaListComponent implements OnInit {
 
   onDelete(id: number) {
     this.republicaService.delete(id).subscribe(result => {
-      alert("República deletada!");
+      alert('República deletada!');
       this.ngOnInit();
     });
   }
@@ -38,5 +40,24 @@ export class RepublicaListComponent implements OnInit {
     this.republicaService.setRepublica(republica);
     this.router.navigate(['/addrepublica']);
   }
+
+  onDetalhes(republica: Republica): void {
+    const dialogRef = this.dialog.open(RepublicaListDialogComponent, {
+      width: '600px',
+      data: republica
+    });
+  }
+
+}
+
+@Component({
+  selector: 'app-republica-list-dialog',
+  templateUrl: 'republica-list-dialog.component.html',
+})
+export class RepublicaListDialogComponent {
+
+  constructor(
+    public dialogRef: MatDialogRef<RepublicaListDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: Republica) { }
 
 }
