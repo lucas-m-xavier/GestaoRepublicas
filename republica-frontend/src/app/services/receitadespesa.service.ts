@@ -16,23 +16,19 @@ export class ReceitadespesaService {
     this.receitaDespesaUrl = 'http://localhost:8080/republica/receitasdespesas';
   }
 
-  /*
   form: FormGroup = new FormGroup({
     $key: new FormControl(null),
-    nome: new FormControl('', Validators.required),
-    endereco: new FormControl('', Validators.required),
-    numeroVagas: new FormControl('', Validators.required),
-    tipoLocacao: new FormControl('', Validators.required),
-    genero: new FormControl('', Validators.required),
-    integrantes: new FormControl('', Validators.required),
-    numeroComodos: new FormControl('', Validators.required),
-    utensilios: new FormControl('', Validators.required),
-    diferencial: new FormControl('', Validators.required),
-    numeroVagasDisponiveis: new FormControl('', Validators.required),
+    republica: new FormControl('', Validators.required),
+    tipo: new FormControl('', Validators.required),
     descricao: new FormControl('', Validators.required),
-    representante: new FormControl('', Validators.required),
-    link: new FormControl('', Validators.required)
-  });*/
+    valor: new FormControl('', Validators.required),
+    periodo: new FormControl('', Validators.required),
+    divisao: new FormControl('', Validators.required),
+    valorDividido: new FormControl('', Validators.required),
+    dataLancamento: new FormControl('', Validators.required),
+    dataVencimentoRecebimento: new FormControl('', Validators.required),
+    efetivado: new FormControl('', Validators.required)
+  });
 
   public findAll(): Observable<ReceitaDespesa[]> {
     return this.http.get<ReceitaDespesa[]>(this.receitaDespesaUrl);

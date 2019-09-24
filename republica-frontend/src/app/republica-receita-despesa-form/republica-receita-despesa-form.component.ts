@@ -15,7 +15,8 @@ export class RepublicaReceitaDespesaFormComponent implements OnInit {
   receitaDespesa: ReceitaDespesa;
   republicas: Republica[];
 
-  constructor(private route: ActivatedRoute, private router: Router, private receitaDespesaService: ReceitadespesaService, private republicaService: RepublicaService) {
+  constructor(private route: ActivatedRoute, private router: Router, private receitaDespesaService: ReceitadespesaService,
+              private republicaService: RepublicaService) {
     this.receitaDespesa = new ReceitaDespesa();
   }
 

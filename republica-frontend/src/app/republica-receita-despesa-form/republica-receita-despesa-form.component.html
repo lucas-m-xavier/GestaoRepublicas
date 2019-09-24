@@ -1,8 +1,8 @@
-<form (ngSubmit)="onSubmit()" [formGroup]="republicaService.form">
+<form (ngSubmit)="onSubmit()" [formGroup]="receitaDespesaService.form">
     <div class="container">
         <input type="hidden" formControlName="$key">
         <mat-form-field>
-            <mat-select formControlName="republica" placeholder="Republica" [(ngModel)]="receitadespesa.republica"
+            <mat-select formControlName="republica" placeholder="Republica" [(ngModel)]="receitaDespesa.republica"
                 name="republica">
                 <mat-option *ngFor="let republica of republicas" [value]="republica">
                     {{ republica.nome }}</mat-option>
@@ -12,74 +12,68 @@
 
         <div>
             <label>Tipo: </label>
-            <mat-radio-group formControlName="tipo">
-                <mat-radio-button value="Despesa">Despesa</mat-radio-button>
-                <mat-radio-button value="Receita">Receita</mat-radio-button>
+            <mat-radio-group class="radio-group" formControlName="tipo">
+                <mat-radio-button class="radio-button" value="Despesa">Despesa</mat-radio-button>
+                <mat-radio-button class="radio-button" value="Receita">Receita</mat-radio-button>
             </mat-radio-group>
         </div>
 
         <mat-form-field>
-            <input formControlName="descricao" matInput placeholder="Descrição" [(ngModel)]="receitadespesa.descricao"
+            <input formControlName="descricao" matInput placeholder="Descrição" [(ngModel)]="receitaDespesa.descricao"
                 name="descricao">
             <mat-error>Este campo é obrigatório.</mat-error>
         </mat-form-field>
 
         <mat-form-field>
-            <input formControlName="endereco" matInput placeholder="Endereco" [(ngModel)]="republica.endereco"
-                name="endereco">
-            <mat-error>Este campo é obrigatório.</mat-error>
-        </mat-form-field>
-
-        <mat-form-field>
             <input formControlName="valor" matInput type="number" placeholder="Valor(R$)"
-                [(ngModel)]="receitadespesa.valor" name="valor">
+                [(ngModel)]="receitaDespesa.valor" name="valor">
             <mat-error>Este campo é obrigatório.</mat-error>
         </mat-form-field>
 
         <div>
             <label>Período: </label>
-            <mat-radio-group formControlName="tipo">
-                <mat-radio-button value="Mensal">Mensal</mat-radio-button>
-                <mat-radio-button value="Semestral">Semestral</mat-radio-button>
-                <mat-radio-button value="Indefinido">Indefinido</mat-radio-button>
+            <mat-radio-group class="radio-group" formControlName="periodo">
+                <mat-radio-button class="radio-button" value="Mensal">Mensal</mat-radio-button>
+                <mat-radio-button class="radio-button" value="Semestral">Semestral</mat-radio-button>
+                <mat-radio-button class="radio-button" value="Indefinido">Indefinido</mat-radio-button>
             </mat-radio-group>
         </div>
 
         <div>
             <label>Divisão: </label>
-            <mat-radio-group formControlName="tipo">
-                <mat-radio-button value="true">Todos</mat-radio-button>
-                <mat-radio-button value="false">Sem divisão</mat-radio-button>
+            <mat-radio-group class="radio-group" formControlName="tipo">
+                <mat-radio-button class="radio-button" value="true">Todos</mat-radio-button>
+                <mat-radio-button class="radio-button" value="false">Sem divisão</mat-radio-button>
             </mat-radio-group>
         </div>
 
         <mat-form-field>
             <input formControlName="valorDividido" matInput type="number" placeholder="Valor Dividido(R$)"
-                [(ngModel)]="receitadespesa.valorDividido" name="valorDividido">
+                [(ngModel)]="receitaDespesa.valorDividido" name="valorDividido">
             <mat-error>Este campo é obrigatório.</mat-error>
         </mat-form-field>
 
         <mat-form-field>
             <input formControlName="dataLancamento" matInput placeholder="Data de Lançamento"
-                [(ngModel)]="republica.dataLancamento" name="integrantes">
+                [(ngModel)]="receitaDespesa.dataLancamento" name="dataLancamento" disabled>
             <mat-error>Este campo é obrigatório.</mat-error>
         </mat-form-field>
 
         <mat-form-field>
             <input formControlName="dataVencimentoRecebimento" matInput placeholder="Data de Vecimento / Recebimento"
-                [(ngModel)]="republica.dataVencimentoRecebimento" name="dataVencimentoRecebimento">
+                [(ngModel)]="receitaDespesa.dataVencimentoRecebimento" name="dataVencimentoRecebimento">
             <mat-error>Este campo é obrigatório.</mat-error>
         </mat-form-field>
 
         <div>
             <label>Efetivado: </label>
-            <mat-radio-group formControlName="tipo">
-                <mat-radio-button value="true">Sim</mat-radio-button>
-                <mat-radio-button value="false">Não</mat-radio-button>
+            <mat-radio-group class="radio-group" formControlName="tipo">
+                <mat-radio-button class="radio-button" value="true">Sim</mat-radio-button>
+                <mat-radio-button class="radio-button" value="false">Não</mat-radio-button>
             </mat-radio-group>
         </div>
 
         <button type="submit" mat-raised-button color="primary"
-            [disabled]="republicaService.form.invalid">Cadastrar</button>
+            [disabled]="receitaDespesaService.form.invalid">Cadastrar</button>
     </div>
 </form>
