@@ -30,6 +30,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatDialogModule } from '@angular/material/dialog';
 import { RepublicaReceitaDespesaFormComponent } from './republica-receita-despesa-form/republica-receita-despesa-form.component';
 import { MatRadioModule } from '@angular/material/radio';
+import { RepublicaReceitaDespesaListComponent } from './republica-receita-despesa-list/republica-receita-despesa-list.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { MatRadioModule } from '@angular/material/radio';
     RepublicadisponivelListComponent,
     MainNavComponent,
     RepublicaListDialogComponent,
-    RepublicaReceitaDespesaFormComponent
+    RepublicaReceitaDespesaFormComponent,
+    RepublicaReceitaDespesaListComponent
   ],
   entryComponents: [
     RepublicaListDialogComponent
