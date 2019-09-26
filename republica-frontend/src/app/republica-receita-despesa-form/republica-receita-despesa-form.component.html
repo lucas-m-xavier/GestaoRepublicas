@@ -12,7 +12,7 @@
 
         <div>
             <label>Tipo: </label>
-            <mat-radio-group class="radio-group" formControlName="tipo">
+            <mat-radio-group class="radio-group" formControlName="tipo" [(ngModel)]="receitaDespesa.tipo">
                 <mat-radio-button class="radio-button" value="Despesa">Despesa</mat-radio-button>
                 <mat-radio-button class="radio-button" value="Receita">Receita</mat-radio-button>
             </mat-radio-group>
@@ -32,7 +32,7 @@
 
         <div>
             <label>Período: </label>
-            <mat-radio-group class="radio-group" formControlName="periodo">
+            <mat-radio-group class="radio-group" formControlName="periodo" [(ngModel)]="receitaDespesa.periodo">
                 <mat-radio-button class="radio-button" value="Mensal">Mensal</mat-radio-button>
                 <mat-radio-button class="radio-button" value="Semestral">Semestral</mat-radio-button>
                 <mat-radio-button class="radio-button" value="Indefinido">Indefinido</mat-radio-button>
@@ -41,7 +41,7 @@
 
         <div>
             <label>Divisão: </label>
-            <mat-radio-group class="radio-group" formControlName="tipo">
+            <mat-radio-group class="radio-group" formControlName="divisao" [(ngModel)]="receitaDespesa.divisao">
                 <mat-radio-button class="radio-button" value="true">Todos</mat-radio-button>
                 <mat-radio-button class="radio-button" value="false">Sem divisão</mat-radio-button>
             </mat-radio-group>
@@ -55,7 +55,7 @@
 
         <mat-form-field>
             <input formControlName="dataLancamento" matInput placeholder="Data de Lançamento"
-                [(ngModel)]="receitaDespesa.dataLancamento" name="dataLancamento" disabled>
+                [(ngModel)]="receitaDespesa.dataLancamento" name="dataLancamento">
             <mat-error>Este campo é obrigatório.</mat-error>
         </mat-form-field>
 
@@ -67,7 +67,7 @@
 
         <div>
             <label>Efetivado: </label>
-            <mat-radio-group class="radio-group" formControlName="tipo">
+            <mat-radio-group class="radio-group" formControlName="efetivado" [(ngModel)]="receitaDespesa.efetivado">
                 <mat-radio-button class="radio-button" value="true">Sim</mat-radio-button>
                 <mat-radio-button class="radio-button" value="false">Não</mat-radio-button>
             </mat-radio-group>

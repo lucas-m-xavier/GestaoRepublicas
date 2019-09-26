@@ -10,26 +10,26 @@ import { ReceitadespesaService } from '../services/receitadespesa.service';
 })
 export class RepublicaReceitaDespesaListComponent implements OnInit {
 
-  recdes: ReceitaDespesa[]
-  displayedColumns: string[] = [];
+  receitaDespesa: ReceitaDespesa[];
+  displayedColumns: string[] = ['tipo', 'descricao', 'valor', 'periodo', 'dataLancamento', 'dataVencimentoRecebimento', 'acoes'];
 
   constructor(private route: ActivatedRoute, private router: Router, private receitadespesaService: ReceitadespesaService) { }
 
   ngOnInit() {
     this.receitadespesaService.findAll().subscribe(data =>{
-      this.recdes = data
+      this.receitaDespesa = data;
     });
   }
 
   onCreate() {
-    let rd = new ReceitaDespesa();
-    this.receitadespesaService.setReceitaDespesa(rd);
-    this.router.navigate(['/republicas/registrarreceitasdespesas']);
+    let receitaDespesa = new ReceitaDespesa();
+    this.receitadespesaService.setReceitaDespesa(receitaDespesa);
+    this.router.navigate(['/republicas/addreceitasdespesas']);
   }
 
   onUpdate(recd: ReceitaDespesa) {
     this.receitadespesaService.setReceitaDespesa(recd);
-    this.router.navigate(['/republicas/registrarreceitasdespesas']);
+    this.router.navigate(['/republicas/addreceitasdespesas']);
   }
 
   onDelete(id: number) {

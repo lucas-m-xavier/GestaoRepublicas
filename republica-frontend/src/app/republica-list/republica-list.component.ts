@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Republica } from '../models/republica';
-import { RepublicaService } from '../services/republica.service'
+import { RepublicaService } from '../services/republica.service';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
@@ -11,15 +11,16 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dial
 })
 export class RepublicaListComponent implements OnInit {
 
-  republicas: Republica[]
+  republicas: Republica[];
   displayedColumns: string[] = ['id', 'nome', 'endereco', 'numeroVagas', 'tipoLocacao', 'genero',
     'numeroComodos', 'diferencial', 'numeroVagasDisponiveis', 'descricao', 'representante', 'acoes'];
 
-  constructor(private route: ActivatedRoute, private router: Router, private republicaService: RepublicaService, private dialog: MatDialog) { }
+  constructor(private route: ActivatedRoute, private router: Router,
+              private republicaService: RepublicaService, private dialog: MatDialog) { }
 
   ngOnInit() {
     this.republicaService.findAll().subscribe(data => {
-      this.republicas = data
+      this.republicas = data;
     });
   }
 

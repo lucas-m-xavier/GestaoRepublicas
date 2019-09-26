@@ -10,7 +10,7 @@ const routes: Routes = [
   { path: 'republicas', component: RepublicaListComponent },
   { path: 'addrepublica', component: RepublicaFormComponent },
   { path: 'republicas/disponiveis', component: RepublicadisponivelListComponent },
-  { path: 'republicas/registrarreceitasdespesas', component: RepublicaReceitaDespesaFormComponent },
+  { path: 'republicas/addreceitasdespesas', component: RepublicaReceitaDespesaFormComponent },
   { path: 'republicas/receitasdespesas', component: RepublicaReceitaDespesaListComponent }
 ];
 
