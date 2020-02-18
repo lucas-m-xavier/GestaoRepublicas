@@ -6,12 +6,12 @@
     <p><b><h4>Gênero: </h4></b>{{ data.genero }}</p>
     <p><b><h4>Moradores: </h4></b>
         <ol>
-            <li *ngFor="let item of data.moradores">
-                    {{ item.nome }}
+            <li *ngFor="let morador of data.moradores">
+                    {{ morador.nome }}
             </li>
         </ol>
     <p><b><h4>Número de Comôdos: </h4></b>{{ data.numeroComodos }}</p>
-    <p><b><h4>Utensílios: </h4></b>{{ data.utenisilios }}</p>
+    <p><b><h4>Utensílios: </h4></b>{{ data.utensilios }}</p>
     <p><b><h4>Diferencial: </h4></b>{{ data.diferencial }}</p>
     <p><b><h4>Vagas Dísponiveis: </h4></b>{{ data.numeroVagasDisponiveis }}</p>
     <p><b><h4>Descrição: </h4></b>{{ data.descricao }}</p>
@@ -20,5 +20,5 @@
     <a></a>
 </div>
 <div mat-dialog-actions>
-    <button mat-button [mat-dialog-close]="data.republica" cdkFocusInitial>Ok</button>
+    <button mat-button [mat-dialog-close]="" cdkFocusInitial>Ok</button>
 </div>

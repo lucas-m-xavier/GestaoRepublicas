@@ -7,6 +7,7 @@ import javax.validation.constraints.Min;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 
+import com.dev.republica.model.Morador;
 import com.dev.republica.model.Republica;
 
 @Validated
@@ -23,4 +24,6 @@ public interface RepublicaService {
 	ResponseEntity<?> deleteById(Long id);
 
 	List<Republica> getRepublicasDisponiveis();
+
+	Republica addMorador(Republica republica, Morador morador);
 }

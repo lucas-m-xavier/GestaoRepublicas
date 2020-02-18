@@ -1,17 +1,23 @@
 package com.dev.republica.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 public class Republica {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
 	@NotNull
@@ -29,8 +35,9 @@ public class Republica {
 	@NotNull
 	private String genero;
 
-	@NotNull
-	private String integrantes;
+	@OneToMany(mappedBy = "republica")
+	@JsonIgnoreProperties("republica")
+	private List<Morador> moradores = new ArrayList<>();
 
 	@NotNull
 	private byte numeroComodos;
@@ -48,26 +55,24 @@ public class Republica {
 	private String descricao;
 
 	@OneToOne
-	private Representante representante;
+	@JsonIgnoreProperties("republica")
+	private Morador representante;
 
 	@NotNull
 	private String link;
 
-	@NotNull
-	private String curso;
-
 	public Republica(Long id, @NotNull String nome, @NotNull String endereco, @NotNull byte numeroVagas,
-			@NotNull String tipoLocacao, @NotNull String genero, @NotNull String integrantes,
+			@NotNull String tipoLocacao, @NotNull String genero, @NotNull List<Morador> moradores,
 			@NotNull byte numeroComodos, @NotNull String utensilios, @NotNull String diferencial,
-			@NotNull byte numeroVagasDisponiveis, @NotNull String descricao, @NotNull Representante representante,
-			@NotNull String link, @NotNull String curso) {
+			@NotNull byte numeroVagasDisponiveis, @NotNull String descricao, @NotNull Morador representante,
+			@NotNull String link) {
 		this.id = id;
 		this.nome = nome;
 		this.endereco = endereco;
 		this.numeroVagas = numeroVagas;
 		this.tipoLocacao = tipoLocacao;
 		this.genero = genero;
-		this.integrantes = integrantes;
+		this.moradores = moradores;
 		this.numeroComodos = numeroComodos;
 		this.utensilios = utensilios;
 		this.diferencial = diferencial;
@@ -75,7 +80,28 @@ public class Republica {
 		this.descricao = descricao;
 		this.representante = representante;
 		this.link = link;
-		this.curso = curso;
+	}
+
+	public Republica(Long id, @NotNull String nome, @NotNull String endereco, @NotNull byte numeroVagas,
+			@NotNull String tipoLocacao, @NotNull String genero, @NotNull byte numeroComodos,
+			@NotNull String utensilios, @NotNull String diferencial, @NotNull String descricao,
+			@NotNull Morador representante, @NotNull String link) {
+		this.id = id;
+		this.nome = nome;
+		this.endereco = endereco;
+		this.numeroVagas = numeroVagas;
+		this.tipoLocacao = tipoLocacao;
+		this.genero = genero;
+		this.numeroComodos = numeroComodos;
+		this.utensilios = utensilios;
+		this.diferencial = diferencial;
+		this.numeroVagasDisponiveis = (byte) (this.getNumeroVagas() - 1);
+		this.descricao = descricao;
+		this.representante = representante;
+		this.link = link;
+
+		this.moradores.add(representante);
+		representante.setRepresentante(true);
 	}
 
 	public Republica() {
@@ -129,12 +155,31 @@ public class Republica {
 		this.genero = genero;
 	}
 
-	public String getIntegrantes() {
-		return integrantes;
+	public List<Morador> getMoradores() {
+		return moradores;
 	}
 
-	public void setIntegrantes(String integrantes) {
-		this.integrantes = integrantes;
+	public void setMoradores(List<Morador> moradores) {
+		this.moradores = moradores;
+	}
+
+	public boolean addMorador(Morador morador) {
+		if (this.getNumeroVagasDisponiveis() > 0) {
+			this.moradores.add(morador);
+			this.setNumeroVagasDisponiveis((byte) (this.getNumeroVagasDisponiveis() - 1));
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	public boolean remove(Morador morador) {
+		if (moradores.remove(morador)) {
+			this.setNumeroVagasDisponiveis((byte) (this.getNumeroVagasDisponiveis() + 1));
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 	public byte getNumeroComodos() {
@@ -177,11 +222,11 @@ public class Republica {
 		this.descricao = descricao;
 	}
 
-	public Representante getRepresentante() {
+	public Morador getRepresentante() {
 		return representante;
 	}
 
-	public void setRepresentante(Representante representante) {
+	public void setRepresentante(Morador representante) {
 		this.representante = representante;
 	}
 
@@ -191,14 +236,6 @@ public class Republica {
 
 	public void setLink(String link) {
 		this.link = link;
-	}
-
-	public String getCurso() {
-		return curso;
-	}
-
-	public void setCurso(String curso) {
-		this.curso = curso;
-	}
+	}	
 
 }

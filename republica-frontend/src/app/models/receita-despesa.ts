@@ -1,15 +1,15 @@
 import { Republica } from './republica';
+import { MoradorReceitaDespesa } from './morador-receita-despesa';
 
 export class ReceitaDespesa {
     id: number;
-    republica: Republica;
+    republica: any;
     tipo: String;
     descricao: String;
     valor: number;
     periodo: String;
-    divisao: boolean;
-    valorDividido: number;
-    dataLancamento: String;
-    dataVencimentoRecebimento: String;
+    dataLancamento: Date;
+    dataVencimentoRecebimento: Date;
     efetivado: boolean;
+    moradorReceitaDespesa: MoradorReceitaDespesa[];
 }

@@ -1,14 +1,20 @@
 <mat-sidenav-container class="sidenav-container">
-  <mat-sidenav #drawer class="sidenav" fixedInViewport
+  <mat-sidenav *ngIf="isLoggedIn" #drawer class="sidenav" fixedInViewport
       [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
       [mode]="(isHandset$ | async) ? 'over' : 'side'"
       [opened]="(isHandset$ | async) === false"
       style="background-color: indigo">
-    <mat-toolbar style="color: whitesmoke">Menu</mat-toolbar>
-    <mat-nav-list>
+    <mat-toolbar *ngIf="isLoggedIn" style="color: whitesmoke">Menu</mat-toolbar>
+    <mat-nav-list *ngIf="isLoggedIn">
       <a mat-list-item [routerLink]="['/republicas']" style="color: whitesmoke">Repúblicas</a>
+      <a mat-list-item [routerLink]="['/republicas/moradores']" style="color: whitesmoke">Republica - Moradores</a>
       <a mat-list-item [routerLink]="['/republicas/disponiveis']" style="color: whitesmoke">Repúblicas Disponíveis</a>
-      <a mat-list-item [routerLink]="['/republicas/receitasdespesas']" style="color: whitesmoke">Receitas e Despesas</a>
+      <a mat-list-item [routerLink]="['/morador']" style="color: whitesmoke">Morador</a>
+      <a mat-list-item [routerLink]="['/republica/financas']" style="color: whitesmoke">Finanças da República</a>
+      <a mat-list-item [routerLink]="['/morador/financas']" style="color: whitesmoke">Finanças Individuais</a>
+      <a mat-list-item [routerLink]="['/feedback']" style="color: whitesmoke">Feedback</a>
+      <a mat-list-item [routerLink]="['/moradores']" style="color: whitesmoke">Moradores</a>
+      <a mat-list-item [routerLink]="['/tarefas']" style="color: whitesmoke">Tarefa</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -22,6 +28,31 @@
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
       <span>Gestão de Repúblicas</span>
+
+      <span class="fill-remaining-space"></span>
+      <mat-icon (click)="visualizarNotificacoes()"
+          id="notifications"
+          *ngIf="solicitacoes.length != 0 || feedbacks.length != 0"
+          matBadge="{{totalNotificacoes()}}"
+          matBadgeColor="warn">
+          notifications
+      </mat-icon>
+
+      <form>
+        <div>
+          <mat-form-field>
+            <mat-select placeholder="Morador" name="morador"
+             (selectionChange)="onChange($event.value)">
+              <mat-option  *ngFor="let m of moradores" [value]="m">
+                {{m.nome}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </form>
+      <mat-nav-list>
+        <a *ngIf="isLoggedIn" mat-list-item href="/logout" style="color: whitesmoke" (click)=handleLogout()>Logout</a>
+      </mat-nav-list>
     </mat-toolbar>
     <ng-content></ng-content>
   </mat-sidenav-content>

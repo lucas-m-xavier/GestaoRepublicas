@@ -1,18 +1,18 @@
-import { Representante } from './representante';
+import { Morador } from './morador';
 
 export class Republica {
     id: number;
-    nome: String
-    endereco: String
-    numeroVagas: number
-    tipoLocacao: String
-    genero: String
-    integrantes: String
-    numeroComodos: number
-    utensilios: String
-    diferencial: String
-    numeroVagasDisponiveis: number
-    descricao: String
-    representante: Representante
-    link: String
+    nome: String;
+    endereco: String;
+    numeroVagas: number;
+    tipoLocacao: String;
+    genero: String;
+    moradores: Morador[];
+    numeroComodos: number;
+    utensilios: String;
+    diferencial: String;
+    numeroVagasDisponiveis: number;
+    descricao: String;
+    representante: Morador;
+    link: String;
 }

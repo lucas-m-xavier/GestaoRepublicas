@@ -1,6 +1,4 @@
-<div style="padding-bottom: 13px">
-    Repúblicas
-</div>
+<h2>Repúblicas</h2>
 <button mat-raised-button color="primary" (click)="onCreate()">Adicionar República</button>
 <br>
 <br>
@@ -95,6 +93,8 @@
                 <button mat-flat-button color="primary" (click)="onUpdate(republica)">Editar</button>
                 &nbsp;
                 <button mat-flat-button color="warn" (click)="onDelete(republica.id)">Excluir</button>
+                &nbsp;
+                <button mat-flat-button color="accent" (click)="onAdd(republica.id)">Gerar Convite</button>
             </td>
         </ng-container>
 

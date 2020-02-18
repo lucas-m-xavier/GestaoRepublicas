@@ -1,6 +1,4 @@
-<div style="padding-bottom: 13px">
-    Receitas e Despesas
-</div>
+<h2>Receitas e Despesas</h2>
 <button mat-raised-button color="primary" (click)="onCreate()">Adicionar Receita/Despesa</button>
 <br>
 <br>
@@ -28,12 +26,12 @@
 
     <ng-container matColumnDef="dataLancamento">
         <th mat-header-cell *matHeaderCellDef> Data de Lançamento </th>
-        <td mat-cell *matCellDef="let financas"> {{financas.dataLancamento}} </td>
+        <td mat-cell *matCellDef="let financas"> {{financas.dataLancamento | date: 'dd/MM/yyyy hh:mm:ss'}} </td>
     </ng-container>
-    
+
     <ng-container matColumnDef="dataVencimentoRecebimento">
         <th mat-header-cell *matHeaderCellDef> Data de Vencimento / Recebimento</th>
-        <td mat-cell *matCellDef="let financas"> {{financas.dataVencimentoRecebimento}} </td>
+        <td mat-cell *matCellDef="let financas"> {{financas.dataVencimentoRecebimento | date: 'dd/MM/yyyy hh:mm:ss'}} </td>
     </ng-container>
 
     <ng-container matColumnDef="acoes">
@@ -41,7 +39,9 @@
         <td mat-cell *matCellDef="let financas">
             <button mat-flat-button color="primary" (click)="onUpdate(financas)">Editar</button>
             &nbsp;
-            <button mat-flat-button color="warn" (click)="onDelete(financas.id)">Excluir</button>
+            <button mat-flat-button color="primary" (click)="estornar(financas)">Estornar</button>
+            <!-- &nbsp;
+            <button mat-flat-button color="warn" (click)="onDelete(financas.id)">Excluir</button> -->
         </td>
     </ng-container>
 

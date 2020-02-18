@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.dev.republica.model.Morador;
 import com.dev.republica.model.Republica;
 import com.dev.republica.repository.RepublicaRepository;
 
@@ -38,7 +39,7 @@ public class RepublicaServiceImpl implements RepublicaService {
 			record.setNumeroVagas(republica.getNumeroVagas());
 			record.setTipoLocacao(republica.getTipoLocacao());
 			record.setGenero(republica.getGenero());
-			record.setIntegrantes(republica.getIntegrantes());
+			record.setMoradores(republica.getMoradores());
 			record.setNumeroComodos(republica.getNumeroComodos());
 			record.setUtensilios(republica.getUtensilios());
 			record.setDiferencial(republica.getDiferencial());
@@ -46,7 +47,6 @@ public class RepublicaServiceImpl implements RepublicaService {
 			record.setDescricao(republica.getDescricao());
 			record.setRepresentante(republica.getRepresentante());
 			record.setLink(republica.getLink());
-			record.setCurso(republica.getCurso());
 			Republica updated = save(record);
 			return ResponseEntity.ok().body(updated);
 		}).orElse(ResponseEntity.notFound().build());
@@ -61,6 +61,11 @@ public class RepublicaServiceImpl implements RepublicaService {
 
 	public List<Republica> getRepublicasDisponiveis() {
 		return republicaRepository.findByNumeroVagasDisponiveisGreaterThanEqual((byte) 1);
+	}
+
+	public Republica addMorador(Republica republica, Morador morador) {
+		morador.setRepublica(republica);
+		return republica;
 	}
 
 }

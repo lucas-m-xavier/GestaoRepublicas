@@ -49,6 +49,10 @@ export class RepublicaListComponent implements OnInit {
     });
   }
 
+  onAdd(id: number) {
+    alert('localhost:8080/republicas/' + id + '/adicionarmorador');
+  }
+
 }
 
 @Component({

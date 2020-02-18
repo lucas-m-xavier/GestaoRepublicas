@@ -9,14 +9,25 @@ import { ReceitadespesaService } from '../services/receitadespesa.service';
   styleUrls: ['./republica-receita-despesa-list.component.css']
 })
 export class RepublicaReceitaDespesaListComponent implements OnInit {
-
   receitaDespesa: ReceitaDespesa[];
-  displayedColumns: string[] = ['tipo', 'descricao', 'valor', 'periodo', 'dataLancamento', 'dataVencimentoRecebimento', 'acoes'];
+  displayedColumns: string[] = [
+    'tipo',
+    'descricao',
+    'valor',
+    'periodo',
+    'dataLancamento',
+    'dataVencimentoRecebimento',
+    'acoes'
+  ];
 
-  constructor(private route: ActivatedRoute, private router: Router, private receitadespesaService: ReceitadespesaService) { }
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private receitadespesaService: ReceitadespesaService
+  ) {}
 
   ngOnInit() {
-    this.receitadespesaService.findAll().subscribe(data =>{
+    this.receitadespesaService.findAll().subscribe(data => {
       this.receitaDespesa = data;
     });
   }
@@ -24,18 +35,26 @@ export class RepublicaReceitaDespesaListComponent implements OnInit {
   onCreate() {
     let receitaDespesa = new ReceitaDespesa();
     this.receitadespesaService.setReceitaDespesa(receitaDespesa);
-    this.router.navigate(['/republicas/addreceitasdespesas']);
+    this.router.navigate(["/republicas/addreceitasdespesas"]);
   }
 
   onUpdate(recd: ReceitaDespesa) {
     this.receitadespesaService.setReceitaDespesa(recd);
-    this.router.navigate(['/republicas/addreceitasdespesas']);
+    this.router.navigate(["/republicas/addreceitasdespesas"]);
   }
 
-  onDelete(id: number) {
-    this.receitadespesaService.delete(id).subscribe(result => {
-      alert('Receita/Despesa deletada!');
-      this.ngOnInit();
-    });
+  estornar(recd: ReceitaDespesa) {
+    let receitaDespesa = new ReceitaDespesa();
+    receitaDespesa = recd;
+    receitaDespesa.descricao = "Estorno " + receitaDespesa.descricao;
+
+    if (receitaDespesa.tipo === "Receita") {
+      receitaDespesa.tipo = "Despesa";
+    } else {
+      receitaDespesa.tipo = "Receita";
+    }
+
+    this.receitadespesaService.setReceitaDespesa(receitaDespesa);
+    this.router.navigate(["/republicas/addreceitasdespesas"]);
   }
 }
