@@ -101,7 +101,7 @@ public class RepublicaApplication {
 			
 			Usuario u1 = usuarioRepository.save(new Usuario(1L, "astolfo", "1234", m1));
 			Usuario u2 = usuarioRepository.save(new Usuario(2L, "seilavei", "1234", m2));
-			
+			u1.setAtivo(true);
 			/*
 			 * republicaService.save(new Republica(2L, "Ilha da macacada", "Rua 4, nº 30",
 			 * (byte) 3, "Casa", "Masculina", "Mateus, João", (byte) 3,
