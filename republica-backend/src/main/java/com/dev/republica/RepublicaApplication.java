@@ -16,7 +16,6 @@ import com.dev.republica.model.MoradorReceitaDespesa;
 import com.dev.republica.model.ReceitaDespesa;
 import com.dev.republica.model.Republica;
 import com.dev.republica.model.Usuario;
-import com.dev.republica.model.UsuarioPrincipal;
 import com.dev.republica.repository.FeedbackRepository;
 import com.dev.republica.repository.HistoricoRepository;
 import com.dev.republica.repository.MoradorReceitaDespesaRepository;

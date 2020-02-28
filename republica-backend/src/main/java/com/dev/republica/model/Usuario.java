@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 
 import org.springframework.security.core.GrantedAuthority;
@@ -29,6 +30,9 @@ public class Usuario implements UserDetails{
 	private Morador morador;
 	
 	private boolean ativo;
+	
+	@ManyToMany
+    private Collection<Role> roles;
 	
 	public Usuario() {	
 	}
@@ -76,6 +80,14 @@ public class Usuario implements UserDetails{
 		this.ativo = ativo;
 	}
 	
+	public Collection<Role> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(Collection<Role> roles) {
+		this.roles = roles;
+	}
+
 	@Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return null;
